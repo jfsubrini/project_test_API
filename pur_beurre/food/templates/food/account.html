@@ -1,0 +1,25 @@
+{% extends 'food/base.html' %}
+{% block title %}Mon compte{% endblock title %}
+{% block content %}
+
+<header class="text-center text-white d-flex account_img">
+  <div class="container my-auto">
+    <div class="row">
+      <div class="col-lg-8 mx-auto">
+        <h1>A hoy<br>{{ user.username }} !</h1>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section>
+  <div class="container my-auto">
+    <div class="row">
+      <div class="offset-md-2 col-md-8 offset-sm-1 col-sm-10">
+        <h3 class="my_email">{{ user.email }}</h3>
+      </div>
+    </div>
+  </div>
+</section>  
+
+{% endblock content %}

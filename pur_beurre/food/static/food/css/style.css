@@ -1,0 +1,242 @@
+/* CSS FOR TEMPLATES */
+
+
+
+/* HEADER CSS - base.html */
+#chercher {
+	margin-top: 5px;
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 700;
+	color: #D3D3D3;
+	text-align: center;
+}
+
+#moncompte {
+	padding-left: 10px;
+	padding-right: 6px;
+}
+
+#deconnexion {
+	padding-left: 10px;
+	padding-right: 1px;
+}
+
+
+/* HEADER CSS - foodresult.html */
+.food_to_replace {
+	padding-top: 8rem;
+  	padding-bottom: calc(3rem - 56px);
+	background-color: #345A61;
+}
+
+.food_name {
+	font-family: "Open Sans", sans-serif;
+	font-weight: 400;
+	font-size: 1.2em;
+}
+
+
+/* HEADER CSS - selection.html */
+.my_food {
+	padding-top: 10rem;
+  	padding-bottom: calc(6rem - 56px);
+	background-color: #345A61;
+	color: #C45525;
+}
+
+
+/* Some CSS details for home.html */
+#separation_home {
+	padding: .3em 0;
+	background-color: #345A61;
+}
+
+#history_width {
+	max-width: 700px;
+}
+
+#button_design {
+	-moz-border-radius: 0px;
+    -webkit-border-radius: 0px;
+	border-radius: 0px;
+  	text-transform: capitalize;
+  	letter-spacing: 1px;
+}
+
+
+/* Background image for different templates */
+.account_img, .register_img, .signin_img, .imprint_img, .foodresult_img {
+	padding-top: 10rem;
+  	padding-bottom: calc(10rem - 56px);
+  	background-position: center center;
+  	-webkit-background-size: cover;
+  	-moz-background-size: cover;
+  	-o-background-size: cover;
+  	background-size: cover;
+}
+
+.account_img {
+	background-image: url("../img/account.jpg");
+}
+
+.register_img {
+	background-image: url("../img/register.jpg");
+}
+
+.signin_img {
+	background-image: url("../img/signin.jpg");
+}
+
+.imprint_img {
+  	background-image: url("../img/imprint.jpg");
+}
+
+/* Color of the headline for various templates */
+#register_bonbon, #signin_bonbon, #imprint_bonbon, #selection_bonbon {
+	color: #86EBE6;
+}
+
+/* Food items section - foodresult.html & selection.html */
+.pad_title {
+	padding: 60px 20px;
+}
+
+.pad_items {
+	width: 100%;
+	margin: auto;
+	padding-left: 15%;
+	padding-right: 15%;	
+}
+
+.img_center {
+	margin: auto;
+}
+
+.food_items {
+	font-size: 1.3em;
+	text-align: center;
+	padding: 15px 0;
+	color: #345A61;
+}
+.food_items a {
+	text-decoration: none;
+	color: #345A61;
+}
+.food_items a:hover {
+	padding: 10px;
+	background-color: #DE9440;
+	color: #86EBE6;
+}
+.food_items a:active {
+	color: #345A61;
+}
+
+.save {
+	font-size: 1.3em;
+	text-align: center;
+	text-decoration: none;
+	margin-bottom: 4em;
+}
+.save a {
+	color: #345A61;
+}
+.save a:hover {
+	padding: 10px;
+	background-color: #DE9440;
+	color: #86EBE6;
+}
+.save a:active {
+	color: #345A61;
+}
+
+.badge1 {
+   position: relative;
+}
+
+.badge1[data-badge]:after {
+   content: attr(data-badge);
+   position: absolute;
+   top: -20px;
+   right: -20px;
+   font-size: 1.4em;
+   background-color: #86EBE6;
+   color: #C45525;
+   width: 40px;
+   height: 40px;
+   text-align: center;
+   line-height: 40px;
+   -moz-border-radius: 50%;
+   -webkit-border-radius: 50%;
+   border-radius: 50%;
+   box-shadow: 0 0 1px #333;
+}
+
+/* foodinfo.html */
+.off_url, .my_email {
+	padding: 10px;
+	margin: 70px 15%;
+	text-align: center;
+	border: 2px solid #DE9440;
+	-moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    background-color: #E8A75D;
+}
+.off_url a {
+	color: #345A61;
+	text-decoration: none;
+}
+.off_url a:hover {
+	color: #86EBE6;
+}
+.off_url a:active {
+	color: #345A61;
+}
+
+/* Template account.html */
+.my_email {
+	margin: 0;
+}
+
+/* Templates register.html & signin.html */
+.filling_errors {
+	color: white;
+	font-family: "Scope One";
+	font-weight: 700;
+	font-size: 20px;
+	letter-spacing: 1.2px;
+}
+
+/* Template imprint.html */
+.frame {
+	color: #345A61;
+	background-color: white;
+	padding: 10px;
+	text-decoration: none;
+	list-style-position: inside;
+	-moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+	border-radius: 5px; 
+}
+
+
+/* FOOTER CSS - base.html */
+#footer {
+	font-family: "Open Sans", sans-serif;
+	font-weight: 600;
+	font-size: 20px;
+	color: #C45525;
+	background-color: #345A61;
+	height: 5em;
+	padding-top: 20px;
+}
+
+#footer a {
+    text-decoration: none;
+}
+#footer a:hover {
+    color: ivory;
+}
+#footer a:active {
+    color: black;
+}

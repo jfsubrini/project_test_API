@@ -1,0 +1,16 @@
+{% extends 'food/base.html' %}
+{% block title %}Erreur 500{% endblock title %}
+{% block content %}
+
+<header class="text-center text-white d-flex account_img">
+  <div class="container my-auto">
+    <div class="row">
+      <div class="col-lg-8 mx-auto">
+        <h2>Echec de connexion avec le serveur.<br>
+          Retour à la <a href="{% url 'home' %}">page d'accueil</a>.</h2>
+      </div>
+    </div>
+  </div>
+</header> 
+
+{% endblock content %}

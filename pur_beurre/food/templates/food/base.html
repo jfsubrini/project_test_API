@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Pur Beurre - Le site web qui améliore notre hygiène alimentaire !">
+    <meta name="author" content="Jean-François Subrini">
+
+    <title>{% block title %}{% endblock title %}</title>
+
+    {% load static %}
+
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'food/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+
+    <!-- Custom fonts for this template -->
+    <link href="{% static 'food/vendor/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
+    <!-- For headings -->    
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic' rel='stylesheet' type='text/css'>
+    <!-- For paragraphs -->    
+    <link href='https://fonts.googleapis.com/css?family=Scope+One:400' rel='stylesheet' type='text/css'>
+    <!-- For the rest -->    
+    <link href='https://fonts.googleapis.com/css?family=Scope+One:300,600,700|Open+Sans:700' rel='stylesheet' type='text/css'>
+
+    <!-- Plugin CSS -->
+    <link href="{% static 'food/vendor/magnific-popup/magnific-popup.css' %}" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="{% static 'food/css/creative.min.css' %}" rel="stylesheet">
+
+    <!-- Own CSS to adjust the Creative theme to the client requirements specifications -->
+    <link href="{% static 'food/css/style.css' %}" rel="stylesheet">
+ 
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="{% static 'food/img/logo/logo_pur_beurre-favicon.png' %}" type="image/png">
+
+  </head>
+
+  <body id="page-top">
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+      <div class="container">
+        <a class="navbar-brand js-scroll-trigger" href="{% url 'home' %}#page-top"><img class="img-fluid" src="{% static 'food/img/logo/logo_pur_beurre.png' %}" alt="Logo Pur Beurre" title="Logo Pur Beurre" width="70" height="70"> Pur Beurre</a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <form method="get" action="{% url 'foodresult' %}">
+              <a class="nav-link js-scroll-trigger" href="#"><input type="text" name="query" placeholder="Chercher" id="chercher"></a>
+              </form>
+            </li>
+
+            {% if user.is_authenticated %}
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="{% url 'account' %}"><i class="fa fa-user fa-2x" id="moncompte"></i> Mon compte</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="{% url 'selection' %}"><img class="img-fluid" src="{% static 'food/img/icons/noun_29691_cc.png' %}" alt="Mes aliments" title="Mes aliments" width="41" height="41">Mes aliments</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="{% url 'signout' %}"><i class="fa fa-sign-out fa-2x" id="deconnexion"></i> Déconnexion</a>
+            </li>
+
+            {% else %}
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="{% url 'signin' %}"><i class="fa fa-user fa-2x" id="moncompte"></i> Se connecter</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="{% url 'register' %}"><img class="img-fluid" src="{% static 'food/img/icons/noun_29691_cc.png' %}" alt="Créer un compte" title="Créer un compte" width="41" height="41">Créer un compte</a>
+            </li>
+            {% endif %}
+
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div>
+      {% block content %}{% endblock content %}
+    </div>
+
+    <!-- Footer -->  
+    <footer id="footer">
+      <div class="container text-center">
+        <div class="row">
+          <div class="col-lg-6 "><a href="{% url 'imprint' %}">Mentions légales</div>
+          <div class="col-lg-6"><a href="{% url 'home' %}#contact">Contact</div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="{% static 'food/vendor/jquery/jquery.min.js' %}"></script>
+    <script src="{% static 'food/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="{% static 'food/vendor/jquery-easing/jquery.easing.min.js' %}"></script>
+    <script src="{% static 'food/vendor/scrollreveal/scrollreveal.min.js' %}"></script>
+    <script src="{% static 'food/vendor/magnific-popup/jquery.magnific-popup.min.js' %}"></script>
+
+    <!-- Custom scripts for this template -->
+    <script src="{% static 'food/js/creative.min.js' %}"></script>
+
+  </body>
+
+</html>

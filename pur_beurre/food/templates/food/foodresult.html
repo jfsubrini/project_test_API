@@ -1,0 +1,95 @@
+{% extends 'food/base.html' %}
+{% block title %}Résultats{% endblock title %}
+{% block content %}
+
+<!-- Food to replace -->
+<header class="food_to_replace text-center text-white d-flex">
+  <div class="container my-auto">
+    <div class="row">
+      <div class="col-lg-8 mx-auto">
+        <img class="img-fluid img_center" src="{{ food_search.image_food }}" alt="{{ food_search.name }}" width="20%">
+        <h1 class="food_name portfolio-box badge1" data-badge="{{ food_search.nutrition_grade }}">Aliment cherché : {{ food_search.name|truncatechars:40 }}</h1>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="pad_title">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 text-center">
+        <h2 class="section-heading">Vous pouvez remplacer cet aliment par :</h2>
+        <hr class="my-4">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Showing the substitute products, maximum 6 by page -->
+<section class="p-0">
+  <div class="container">
+    <div class="row pad_items">
+      
+      {% for substitute in substitutes %}
+      <div class="col-md-4 col-xs-12">
+        <a class="portfolio-box badge1" data-badge="{{ substitute.nutrition_grade }}" href="{{ substitute.image_food }}">
+          <figure>
+            <img class="img-fluid img_center" src="{{ substitute.image_food }}" alt="{{ substitute.name }}" width="100%">
+              <div class="portfolio-box-caption">
+                <div class="portfolio-box-caption-content">
+                  <div class="project-category text-faded">
+                    Photo
+                  </div>
+                  <div class="project-name">
+                    {{ substitute.name }}
+                  </div>
+                </div>
+              </div></a>
+            <figcaption class="food_items"><a href="{% url 'foodinfo' pk=substitute.id %}">{{ substitute.name|truncatechars:20 }}</a></figcaption>
+            <!-- Showing the save icon to select a substitute product to the user page 'Mes Aliments' -->
+            {% if user.is_authenticated %}
+              <form method="post">
+                {% csrf_token %}
+                <input type="hidden" name="substitute" value="{{ substitute.id }}">
+                <input type="hidden" name="query" value="{{ original_query }}">
+                <figcaption class="save"><button><span class="fa fa-save fa-4"> Sauvegarder</span></button></figcaption>
+              </form>
+            {% endif %}
+          </figure>
+      </div>
+
+        <!-- Only 3 food products per row -->
+        {% if forloop.counter|divisibleby:3 %}
+          <div class="row popup-gallery pad_items"></div>
+        {% endif %}
+      
+        <!-- In case there is no substitute product into the database -->
+        {% empty %}
+          <h3>Désolé mais nous n'avons pas de produit de substitution à votre aliment.<br>Visiblement vous vous alimentez très sainement !</h3>
+
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+  <!-- Pagination -->
+  {% if paginate %}
+    <nav aria-label="pagination example">
+      <ul class="pagination justify-content-center">
+        <!--Previous button-->
+        {% if substitutes.has_previous %}
+        <li class="page-item">
+          <a class="page-link" href="?query={{ original_query }}&page={{ substitutes.previous_page_number }}" tabindex="-1">Page précédente</a>
+        </li>
+        {% endif %}
+        <!--Next button-->
+        {% if substitutes.has_next %}
+        <li class="page-item">
+          <a class="page-link" href="?query={{ original_query }}&page={{ substitutes.next_page_number }}">Page suivante</a>
+        </li>
+        {% endif %}
+      </ul>
+    </nav>
+  {% endif %}
+
+{% endblock content %}

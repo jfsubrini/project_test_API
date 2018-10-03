@@ -1,0 +1,80 @@
+{% extends 'food/base.html' %}
+{% block title %}Page Aliment{% endblock title %}
+{% block content %}
+{% load static %}
+
+<header class="food_to_replace text-center text-white d-flex">
+  <div class="container my-auto">
+    <div class="row">
+      <div class="col-lg-8 mx-auto">
+        <img class="img-fluid img_center" src="{{ food_info.image_food }}" alt="{{ food_info.name }}" width="20%">
+        <h1 class="food_name">{{ food_info.name }}</h1>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="pad_title">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 text-center">
+        <h2 class="section-heading">Informations sur le produit :</h2>
+        <hr class="my-4">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="p-0">
+  <div class="container">
+    <div class="row popup-gallery pad_items">
+      <div class="col-md-6">
+        <figure>
+          <figcaption class="food_items">Nutriscore</figcaption>
+            <a class="portfolio-box" href="{% static 'food/img/nutriscore/' %}nutriscore_{{ food_info.nutrition_grade }}.jpg">
+            <img class="img-fluid img_center" src="{% static 'food/img/nutriscore/' %}nutriscore_{{ food_info.nutrition_grade }}.jpg" alt="Nutriscore de {{ food_info.name }} : {{ food_info.nutrition_grade }}" width="100%">
+              <div class="portfolio-box-caption">
+                <div class="portfolio-box-caption-content">
+                  <div class="project-category text-faded">
+                    Photo
+                  </div>
+                  <div class="project-name">
+                    Nutriscore
+                  </div>
+                </div>
+              </div>
+            </a>
+        </figure>
+      </div>
+      <div class="col-md-6">
+        <figure>
+          <figcaption class="food_items">Repères nutritionnels pour 100g</figcaption>
+          	<a class="portfolio-box" href="{{ food_info.image_nutrition }}">
+            <img class="img-fluid img_center" src="{{ food_info.image_nutrition }}" alt="Repères nutritionnels pour 100g de {{ food_info.name }}" width="100%">
+              <div class="portfolio-box-caption">
+                <div class="portfolio-box-caption-content">
+                  <div class="project-category text-faded">
+                    Photo
+                  </div>
+                  <div class="project-name">
+                    Repères nutritionnels
+                  </div>
+                </div>
+              </div>
+         	  </a>
+        </figure>
+      </div>
+    </div>
+  </div>
+
+  <div class="container my-auto">
+    <div class="row">
+      <div class="col-md-12">
+        <h3 class="off_url"><a href="{{ food_info.url }}">Voir la fiche d'OpenFoodFacts</a></h3>
+      </div>
+    </div>
+  </div>
+
+</section>  
+
+{% endblock content %}
