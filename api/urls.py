@@ -1,3 +1,6 @@
+# encoding: UTF-8
+
+
 """Api app URL Configuration."""
 
 
@@ -11,7 +14,8 @@ from . import views
 
 
 urlpatterns = [
-    # path('food/<int:customer_id>', views.food, name='food-get'),
-    path('food/create', views.customer_create, name='customers-create'),
-    path('food/search', views.customer_search, name='customers-search'),
+    path('product/<int:product_id>', views.product, name='product_get'),
+    path('product/create', views.product_create, name='product_create'),
+    path('product/search', views.product_search, name='product_search'),
+    path('category/search', views.category_search, name='category_search'),
 ]

@@ -14,7 +14,7 @@ def model_to_json(model):
     Return: the json as a string
     """
     dictionnary = model_to_dict(model)
-    return json.dumps(dictionnary, cls=DjangoJSONEncoder)
+    return json.dumps(dictionnary, cls=DjangoJSONEncoder, indent=4)
 
 
 def queryset_to_json(queryset):
@@ -24,7 +24,7 @@ def queryset_to_json(queryset):
     Return: the json as a string
     """
     list_dicts = [model_to_dict(m) for m in list(queryset)]
-    return json.dumps(list_dicts, cls=DjangoJSONEncoder)
+    return json.dumps(list_dicts, cls=DjangoJSONEncoder, indent=4)
 
 
 def json_to_model(text, model_class):

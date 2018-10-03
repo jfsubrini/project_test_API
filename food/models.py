@@ -36,7 +36,8 @@ class Food(models.Model):
     brand = models.CharField("marque de l'aliment", max_length=100, null=False, default='rien')
     category = models.ForeignKey(
         Category, on_delete=models.CASCADE, related_name='category', verbose_name="catégorie")
-    nutrition_grade = EnumChoiceField(NutritionGrade, verbose_name="nutriscore")
+    # nutrition_grade = EnumChoiceField(NutritionGrade, verbose_name="nutriscore") # Not working with api
+    nutrition_grade = models.CharField("nutriscore", max_length=1)                 # Working with api 
     nutrition_score = models.SmallIntegerField("autre nutriscore")
     url = models.URLField("url de la fiche de l'aliment")
     image_food = models.URLField("url de l'image de l'aliment")
