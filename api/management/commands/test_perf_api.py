@@ -28,50 +28,46 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         """"Handles the process evaluating the performance of my API by testing
-        it with 5000 requests.
+        it with 10 000 requests.
         """
 
         # Introduction message informing on the process.
         self.stdout.write(self.style.SUCCESS(
-            "\nLancement du test de performance de mon API avec 5 000 requêtes.\n"))
+            "\nLancement du test de performance de mon API avec 10 000 requêtes.\n"))
 
-        # First update the categories into the database.
-        # self.check_categories()
-        # self.stdout.write(self.style.SUCCESS(
-        #     "Mise à jour des catégories d'aliments en fonction de la liste établie.\n"))
-
-        # Call to the API to get a json file for each category products.
-        
-
-        # time_before = time.time()
-        # returned_value = func(*args, **kwargs)
-        # time_after = time.time()
-        # running_time = (time_after - time_before)*1000
-
-
+        # Call to the API to get a json file for each product with a range of ids.
+        # Starting time for the testing process.
+        time_before = time.time()
         # Collecting the needed data for each food product.
+        d = 1000
+        t = 10000
         j = 0
-        for product_id in range(1000, 5999):
+        for product_id in range(d, d+t):
             # If the product item has these data then collects them all.
-            try:
-                my_api = self.my_api_data(product_id)
+            my_api = self.my_api_data(product_id)
+            if my_api != []:
                 j += 1
-            except IntegrityError:
+            else:
                 self.stdout.write(self.style.WARNING(
-                    "Il n'y a pas d'aliment avec un id n° {0} dans la base de données".format(product_id)))
+                "Il n'y a pas d'aliment avec l'id n° {0} dans la base de données".format(product_id)))
 
-        # Ending message when the whole update is a success.
+        # Ending time and calculation of duration time for the whole testing process.
+        time_after = time.time()
+        running_time = (time_after - time_before)
+        running_time = round(running_time, 2)
+        # Ending message when the test is over, with the performance result.
         self.stdout.write(self.style.SUCCESS(
-            "\nLe test est terminé.\nAvec {0} requêtes ayant abouties, \
-            le test a mis {1} millisecondes pour s'exécuter".format("xxxx", running_time)))
+            "\nLe test est terminé.\nAvec {0} requêtes ayant abouties sur un total de {1}, le test a mis {2} secondes pour s'exécuter.".format(j, t, running_time)))
 
 
     def my_api_data(self, product_id):
-        """Request to my API to collect data for the food products in the pur_beurre database."""
+        """Request to my API to collect data for the food products in the pur_beurre database,
+        with ids from 1000 to 10999."""
         try:
             payload = {'id': product_id}
             response = requests.get(MY_API_URL, params=payload)
             my_api = response.json()
+            print(my_api)
             return my_api
         except:
             raise CommandError("""
