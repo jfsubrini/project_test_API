@@ -1,16 +1,33 @@
-'''
+"""
 Module for views.
-'''
+"""
+
+import time
 
 from django.http import HttpResponse
 from django.views.decorators.http import require_GET, require_POST
 # from django.contrib.admin.views.decorators import staff_member_required
-from food.models import Food, Category
+from food.models import Food, Category, NutritionGrade
 from api.common import json_to_model
+
+
+
+# def performance(func):
+#     """Decorator creation to evaluate the performance of the API code
+#     """
+#     def inner(*args, **kwargs):
+#         time_before = time.time()
+#         returned_value = func(*args, **kwargs)
+#         time_after = time.time()
+#         running_time = (time_after - time_before)*1000
+#         print("La requête {0} a mis {1} millisecondes pour s'exécuter".format(func, running_time))
+#         return returned_value
+#     return inner
 
 
 @require_GET
 # @staff_member_required
+# @performance
 def product(request, product_id):
     """
     Method: GET
@@ -24,6 +41,7 @@ def product(request, product_id):
 # A TESTER CETTE VUE
 @require_POST
 # @staff_member_required
+# @performance
 def product_create(request):
     """
     Method: POST
@@ -37,6 +55,7 @@ def product_create(request):
 
 @require_GET
 # @staff_member_required
+# @performance
 def product_search(request):
     """
     Method: GET
@@ -50,6 +69,7 @@ def product_search(request):
 
 @require_GET
 # @staff_member_required
+# @performance
 def category_search(request):
     """
     Method: GET
