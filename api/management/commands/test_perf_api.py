@@ -11,7 +11,6 @@ import requests, time
 
 # Django imports
 from django.core.management.base import BaseCommand, CommandError
-from django.db import transaction, IntegrityError
 
 # Imports from my app
 from api.constants import MY_API_URL
@@ -20,7 +19,7 @@ from api.constants import MY_API_URL
 
 class Command(BaseCommand):
     """
-    Django management class to enable the './manage.py test_perf_api.py' command.
+    Django management class to enable the './manage.py test_perf_api' command.
     """
 
     help = "Lance un test pour évaluer la performance de mon API."
